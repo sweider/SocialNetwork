@@ -1,0 +1,6 @@
+﻿@model SocialNetwork.WebUI.Models.AllGroupsViewModel
+
+@foreach (var group in Model.Groups)
+{ 
+    @Html.Partial("_group", new SocialNetwork.WebUI.Models.ShowGroupViewModel(group));
+}

@@ -1,0 +1,14 @@
+﻿@model SocialNetwork.WebUI.Models.NewGroupViewModel
+
+@using (Html.BeginForm("Create", "Group", FormMethod.Post))
+{
+    <div class="control-group">
+        @Html.LabelFor(m => m.GroupName, "Your group name:")
+        @Html.TextBoxFor(m => m.GroupName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.GroupType, "Group type")
+        @Html.DropDownListFor(m => m.GroupName, new SelectList(Model.Types))        
+    </div>
+    <input type="submit" value="Create!" class="btn btn-default"/>
+}
