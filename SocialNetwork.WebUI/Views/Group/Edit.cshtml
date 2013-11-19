@@ -1,6 +1,6 @@
 ﻿@model SocialNetwork.WebUI.Models.GroupViewModel
 
-<div class="thumbnail span9">
+<div class="thumbnail span9" id="group-edit-page">
     <div class="well" id="group-edit-page_header">
         <ul class="nav nav-pills" id="group-edit-page_tab">
             <li class="active"><a href="#home" data-toggle="pill">Information</a></li>
@@ -14,9 +14,26 @@
             @using (Html.BeginForm("Update", "Group", FormMethod.Post))
             {
                 <div class="control-group">
-                    @Html.LabelFor(m => m.Group.Description, "Description")
-                    @Html.TextAreaFor(m => m.Group.Description, new { placeholder = "Describe your group" })
+                    @Html.LabelFor(m => m.Group.Name,"Group name: ")
+                    @Html.TextBoxFor(m => m.Group.Name, new { value = Model.Group.Name})
                 </div>
+                
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Group.Description, "Description: ")
+                    @Html.TextAreaFor(m => m.Group.Description, new { placeholder = "Describe your group...",
+                                                                      value=Model.Group.Description})
+                </div>
+                
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Group.StatusMessage,"Status")
+                    @Html.TextBoxFor(m => m.Group.StatusMessage, new {value = Model.Group.StatusMessage,
+                                                                      placeholder = "Status message"})
+                </div>
+                
+                <div class="control-group">
+                    @html
+                </div>
+                
                 <input type="submit" value="Save" class="btn btn-success" />
             }
        </div>
