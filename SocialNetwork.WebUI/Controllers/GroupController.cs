@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace SocialNetwork.WebUI.Controllers
 {
+   
     public class GroupController : Controller
     {
         public ActionResult New()
@@ -18,9 +19,14 @@ namespace SocialNetwork.WebUI.Controllers
             return View(new NewGroupViewModel { Types = Enum.GetNames(typeof(GroupTipes)).ToList() });
         }
 
-        public ActionResult Show()
+         [Authorize]
+        public ActionResult Show(int id)
         {
-            return View();   
+            var group = new GroupBL().GetGroupById(id, false);
+            return View(new ShowGroupViewModel{   
+                                Group = group,
+                                IsOwnGroup = group.GroupCreatorId == User.Identity.GetUserId() ? true : false
+                             });
         }
 
         public ActionResult Index()
@@ -33,9 +39,14 @@ namespace SocialNetwork.WebUI.Controllers
         {
             //TODO Croup creation + redirect to group edit
             var gBL = new GroupBL();
-            gBL.CreateGroup(model.GroupName, User.Identity.GetUserId(), model.GroupType);
+            var group = gBL.CreateGroup(model.GroupName, User.Identity.GetUserId(), model.GroupType);
 
-            return RedirectToAction("Index");            
+            return RedirectToAction("Edit", new {id = group.GroupId });            
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(new GroupViewModel { Group = new GroupBL().GetGroupById(id,true)});
         }
 
     }

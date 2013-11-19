@@ -1,5 +1,10 @@
 ﻿@model SocialNetwork.WebUI.Models.ShowGroupViewModel
-<div>
-    <p>@Model.Group.Name</p>
+
+@{
+    var path = "Group/Show/" + Model.Group.GroupId;
+}
+<div style="border: solid ridge 1px; border-radius: 4px;">
+   
+    <a href=@path><p>@Model.Group.Name</p></a>
     <p class="muted">@Model.Group.GroupId</p>
 </div>

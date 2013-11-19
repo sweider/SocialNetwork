@@ -8,9 +8,7 @@ namespace SocialNetwork.WebUI.Models
 {
     public class GroupViewModel
     {
-        public string GroupPostContent { get; set; }
-        public string GroupId { get; set; }
-
+        public Group Group { get; set; }
     }
 
     public class NewGroupViewModel
@@ -22,15 +20,18 @@ namespace SocialNetwork.WebUI.Models
 
     public class ShowGroupViewModel
     {
-        public ShowGroupViewModel(Group group)
-        {
-            Group = group;
-        }
+     
+        public bool IsOwnGroup { get; set; }
+        public bool IsAuthoredByGroup { get; set; }
         public Group Group { get; set; }
+
+        public String GroupPostContent { get; set; }
     }
 
     public class AllGroupsViewModel
     {
         public List<Group> Groups { get; set; }
     }
+
+
 }

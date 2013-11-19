@@ -1,0 +1,28 @@
+﻿@model SocialNetwork.WebUI.Models.GroupViewModel
+
+<div class="thumbnail span9">
+    <div class="well" id="group-edit-page_header">
+        <ul class="nav nav-pills" id="group-edit-page_tab">
+            <li class="active"><a href="#home" data-toggle="pill">Information</a></li>
+            <li><a href="#profile" data-toggle="pill">Profile</a></li>
+            <li><a href="#messages" data-toggle="pill">Messages</a></li>
+            <li><a href="#settings" data-toggle="pill">Settings</a></li>
+        </ul>
+    </div>
+    <div id="group-edit-page_tab-content" class="tab-content">
+       <div class="tab-pane active" id="home">
+            @using (Html.BeginForm("Update", "Group", FormMethod.Post))
+            {
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Group.Description, "Description")
+                    @Html.TextAreaFor(m => m.Group.Description, new { placeholder = "Describe your group" })
+                </div>
+                <input type="submit" value="Save" class="btn btn-success" />
+            }
+       </div>
+       <div class="tab-pane" id="profile">blalba</div>
+    </div>
+      
+
+        
+</div>

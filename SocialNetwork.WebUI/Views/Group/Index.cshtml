@@ -2,5 +2,5 @@
 
 @foreach (var group in Model.Groups)
 { 
-    @Html.Partial("_group", new SocialNetwork.WebUI.Models.ShowGroupViewModel(group));
+    @Html.Partial("_group", new SocialNetwork.WebUI.Models.ShowGroupViewModel{Group = group});
 }

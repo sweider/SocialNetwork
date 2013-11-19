@@ -29,12 +29,12 @@ namespace SocialNetwork.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateGroupPost(GroupViewModel model, string returnUrl)
+        public ActionResult CreateGroupPost(ShowGroupViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
-                GroupPostBL.CreatePost(userId, int.Parse(model.GroupId), model.GroupPostContent);
+                GroupPostBL.CreatePost(userId, model.Group.GroupId, model.GroupPostContent);
                 return RedirectToAction("Index", "Home");
             }
 

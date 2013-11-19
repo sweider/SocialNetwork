@@ -30,25 +30,30 @@
         </div>
     </div>
     <div class="container">
-        <div class="hidden btn-group-vertical pull-left span1" id="user-side-menu-small">
-            <a class="btn" href="#"><span class="icon-home"></span> <span class="badge"></span></a>
-            <a class="btn" href="#"><span class="icon-user"></span> <span class="badge"></span></a>
-            <a class="btn" href="#"><span class="icon-comment"></span> <span class="badge"></span></a>
-            <a class="btn" href="#"><span class="icon-star"></span> <span class="badge"></span></a>
-            <a class="btn" href="#"><span class="icon-bullhorn"></span> <span class="badge"></span></a>
-        </div>
-        <div class=" span2 well" id="user-side-menu-well">
-            <ul class="nav nav-pills nav-stacked" id="user-side-menu-ul">
-                <li><a href="/">Home Page</a></li>
-                <li><a href="#">Friends <span class="badge pull-right">4</span></a></li>
-                <li><a href="/Home/MessageView">Messages <span class="badge pull-right">4</span></a></li>
-                <li><a href="/Home/GroupView">Groups <span class="badge pull-right">4</span></a></li>
-                <li><a href="#">News <span class="badge pull-right">4</span></a></li>
+        <div class="row">
+            <div class="hidden btn-group-vertical pull-left span1" id="user-side-menu-small">
+                <a class="btn" href="#"><span class="icon-home"></span> <span class="badge"></span></a>
+                <a class="btn" href="#"><span class="icon-user"></span> <span class="badge"></span></a>
+                <a class="btn" href="#"><span class="icon-comment"></span> <span class="badge"></span></a>
+                <a class="btn" href="#"><span class="icon-star"></span> <span class="badge"></span></a>
+                <a class="btn" href="#"><span class="icon-bullhorn"></span> <span class="badge"></span></a>
+            </div>
+            <div class=" span2 well" id="user-side-menu-well">
+                <ul class="nav nav-pills nav-stacked" id="user-side-menu-ul">
+                    <li><a href="/">Home Page</a></li>
+                    <li><a href="#">Friends <span class="badge pull-right">4</span></a></li>
+                    <li><a href="/Home/MessageView">Messages <span class="badge pull-right">4</span></a></li>
+                    <li><a href="/Home/GroupView">Groups <span class="badge pull-right">4</span></a></li>
+                    <li><a href="#">News <span class="badge pull-right">4</span></a></li>
 
-            </ul>
+                </ul>
+            </div>
+
+            @RenderBody()
+
         </div>
-        @RenderBody()
-        <hr />
+
+        <hr/>
         <footer>
             
         </footer>
