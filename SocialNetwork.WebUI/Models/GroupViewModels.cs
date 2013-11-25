@@ -3,13 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SocialNetwork.BussinessLogic;
 
 namespace SocialNetwork.WebUI.Models
 {
     public class GroupViewModel
     {
         public Group Group { get; set; }
+        public GroupBL.UpdatesParts UpdateSection { get; set; }
     }
+
+
 
     public class NewGroupViewModel
     {

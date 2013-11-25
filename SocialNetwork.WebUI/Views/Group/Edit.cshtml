@@ -1,5 +1,7 @@
 ﻿@model SocialNetwork.WebUI.Models.GroupViewModel
-
+@{
+    string _checked = "";
+}
 <div class="thumbnail span9" id="group-edit-page">
     <div class="well" id="group-edit-page_header">
         <ul class="nav nav-pills" id="group-edit-page_tab">
@@ -11,27 +13,53 @@
     </div>
     <div id="group-edit-page_tab-content" class="tab-content">
        <div class="tab-pane active" id="home">
-            @using (Html.BeginForm("Update", "Group", FormMethod.Post))
+            @using (Html.BeginForm("Update", "Group", new {id = Model.Group.GroupId}, FormMethod.Post))
             {
+                <div class="hidden">
+                    @Html.HiddenFor(m => m.UpdateSection, new { value = 1 })
+                </div>
                 <div class="control-group">
-                    @Html.LabelFor(m => m.Group.Name,"Group name: ")
-                    @Html.TextBoxFor(m => m.Group.Name, new { value = Model.Group.Name})
+                    @Html.LabelFor(m => m.Group.Name, "Group name: ")<br/>
+                    @Html.TextBoxFor(m => m.Group.Name, new { value = Model.Group.Name })
                 </div>
                 
                 <div class="control-group">
-                    @Html.LabelFor(m => m.Group.Description, "Description: ")
-                    @Html.TextAreaFor(m => m.Group.Description, new { placeholder = "Describe your group...",
-                                                                      value=Model.Group.Description})
+                    @Html.LabelFor(m => m.Group.Description, "Description: ")<br/>
+                    @Html.TextAreaFor(m => m.Group.Description, new
+               {
+                   placeholder = "Describe your group...",
+                   value = Model.Group.Description
+               })
                 </div>
                 
                 <div class="control-group">
-                    @Html.LabelFor(m => m.Group.StatusMessage,"Status")
-                    @Html.TextBoxFor(m => m.Group.StatusMessage, new {value = Model.Group.StatusMessage,
-                                                                      placeholder = "Status message"})
+                    @Html.LabelFor(m => m.Group.StatusMessage, "Status")<br/>
+                    @Html.TextBoxFor(m => m.Group.StatusMessage, new
+               {
+                   value = Model.Group.StatusMessage,
+                   placeholder = "Status message"
+               })
                 </div>
                 
-                <div class="control-group">
-                    @html
+                <div class="control-group">                    
+                    @Html.LabelFor(m => m.Group.IsPrivate, "Accessibility of your group: ")<br />
+                    @Model.Group.IsPrivate
+
+                    @{
+                _checked = Model.Group.IsPrivate ? "" : "checked";
+                    }
+                    <div class="inline-block radio">
+                        @Html.RadioButtonFor(m => m.Group.IsPrivate, false, new { name = "IsPrivateGroup", @checked = _checked })
+                        <p class="text-info" style="display:inline">Public group</p>
+                    </div>
+
+                    @{
+                _checked = Model.Group.IsPrivate ? "checked" : "";
+                    }
+                    <div class="inline-block radio">
+                        @Html.RadioButtonFor(m => m.Group.IsPrivate, true, new { name = "IsPrivateGroup", @checked = _checked })
+                        <p class="text-info" style="display:inline">Private group</p>
+                    </div>
                 </div>
                 
                 <input type="submit" value="Save" class="btn btn-success" />

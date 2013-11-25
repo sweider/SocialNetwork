@@ -278,3 +278,7 @@ textarea {
 #group-edit-page .control-group input {
     width: 300px;
 }
+
+#group-edit-page .control-group .radio input{
+    width: auto;
+}

@@ -12,15 +12,7 @@
             <div class="row">
                 <div id="group-page_group-decription" class="span5">
                     <p class="group-description-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse eu ultrices orci. Mauris gravida arcu nisi, et molestie
-                        tellus ultricies a. Donec arcu ante, dictum in augue et, rutrum auctor
-                        sapien. In pulvinar ac justo non vestibulum. Morbi auctor velit id congue
-                        rhoncus. In at felis at leo tincidunt lacinia. Maecenas sagittis ipsum nec
-                        velit lacinia, vel egestas justo volutpat. Vivamus cursus vestibulum velit
-                        id gravida. Mauris auctor magna sed ante mattis consequat eu eu erat. Nunc
-                        imperdiet enim suscipit, consectetur elit ac, porta erat. Maecenas dolor metus,
-                        aliquet vel risus dignissim, lacinia tincidunt mauris.
+                        @Model.Group.Description
                     </p>
                 </div>
             </div>
@@ -234,7 +226,15 @@
                 <img class="" src="http://fs8.www.ex.ua/show/42312207/42312207.jpg?1600" />
 
                 <div class="group-page_group-actions">
+                    @if (Model.IsOwnGroup)
+                    {
+                        <ul class="">
+                           <li> @Html.ActionLink("Manage group", "Edit", new { id = Model.Group.GroupId },
+                           new { @class = "btn btn-default" })</li>
+                        </ul>
+                    }
                     <button class="btn btn-primary btn-large wide">Subscribe</button>
+                   
                 </div>
             </div>
 

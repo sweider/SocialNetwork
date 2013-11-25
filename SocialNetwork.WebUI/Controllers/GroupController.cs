@@ -49,5 +49,12 @@ namespace SocialNetwork.WebUI.Controllers
             return View(new GroupViewModel { Group = new GroupBL().GetGroupById(id,true)});
         }
 
+        [HttpPost]
+        public ActionResult Update(int id, GroupViewModel model)
+        {
+            new GroupBL().UpdateGroup(id, model.Group,model.UpdateSection);
+           
+            return RedirectToAction("Show", new { id = id });
+        }
     }
 }
